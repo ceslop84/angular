@@ -34,6 +34,9 @@
                   type="email"
                   [(ngModel)]="cliente.email"
                   name="email"
+                  mask="A*@A*.A*"
+                  [validation]="true"
+                  [dropSpecialCharacters]="false"
                   placeholder="Ex: jose.silva@gmail.com"
                 />
               </mat-form-field>
@@ -49,6 +52,7 @@
                   type="text"
                   [(ngModel)]="cliente.cpf"
                   name="cpf"
+                  mask="000.000.000-00"
                   placeholder="Ex: 059.749.340-09"
                 />
               </mat-form-field>
@@ -64,8 +68,35 @@
                   type="text"
                   [(ngModel)]="cliente.dataNascimento"
                   name="dataNascimento"
+                  mask="00/00/0000"
                   placeholder="Ex: 12/07/1984"
                 />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
+            <div fxLayout="column" fxFlex="400px">
+              <mat-form-field class="full-width">
+                <mat-label>UF: *</mat-label>
+                <mat-select [(value)]="cliente.estado" (selectionChange)="carregarMunicipios($event)">
+                  <mat-option *ngFor="let uf of estados" [value]="uf.sigla">
+                    {{ uf.sigla }} - {{ uf.nome }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
+            <div fxLayout="column" fxFlex="400px">
+              <mat-form-field class="full-width">
+                <mat-label>Município: *</mat-label>
+                <mat-select [(value)]="cliente.municipio" >
+                  <mat-option *ngFor="let mun of municipios" [value]="mun.nome">
+                    {{ mun.nome }}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
             </div>
           </div>
@@ -73,12 +104,12 @@
         <mat-card-actions>
           <div>
             @if (!atualizando){
-              <button mat-flat-button color="primary" class="ml-5" type="submit">
-                <mat-icon fontIcon="save"></mat-icon>
-                Salvar
-              </button>
+            <button mat-flat-button color="primary" class="ml-5" type="submit">
+              <mat-icon fontIcon="save"></mat-icon>
+              Salvar
+            </button>
             } @else {
-              <button mat-flat-button color="primary" class="ml-5">
+            <button mat-flat-button color="primary" class="ml-5">
               <mat-icon fontIcon="refresh"></mat-icon>
               Atualizar
             </button>

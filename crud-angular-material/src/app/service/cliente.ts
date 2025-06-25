@@ -24,6 +24,12 @@ export class ClienteService {
     localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(clientes));
   }
 
+  apagar(cliente: Cliente) {
+    const clientes = this.obterStorage();
+    const clientesApagado = clientes.filter(c => c.id !== cliente.id);
+    localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(clientesApagado));
+  }
+
   pesquisarClientePorId(id: string): Cliente | undefined {
     const clientes = this.obterStorage();
     return clientes.find((cliente) => cliente.id === id);
