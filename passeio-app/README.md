@@ -2,17 +2,6 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.1.
 
-## Install TailWindCSS
-
-https://tailwindcss.com/docs/installation/framework-guides/angular
-
-## To create a new module
-
-Módulo: ng g m lugares --routing
-Componente: ng g c lugares/component/lugar
-Modelo: ng g class lugares/model/lugar
-Serviço: ng g s lugares/service/lugar
-
 ## Development server
 
 To start a local development server, run:
