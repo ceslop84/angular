@@ -1,0 +1,29 @@
+{
+  "categorias": [
+    {
+      "id": "1",
+      "nome": "Tecnologia",
+      "descricao": "Tudo sobre hardware e software."
+    },
+    {
+      "nome": "Restaurantes 2",
+      "descricao": "Lanches e refeições.",
+      "id": "2"
+    },
+    {
+      "id": "6758",
+      "nome": "Teste",
+      "descricao": "Teste"
+    },
+    {
+      "id": "b263",
+      "nome": "Uhu",
+      "descricao": "Uhu"
+    },
+    {
+      "id": "8dfb",
+      "nome": "teste",
+      "descricao": "teste"
+    }
+  ]
+}
