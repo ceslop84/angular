@@ -25,5 +25,15 @@
       "nome": "teste",
       "descricao": "teste"
     }
+  ],
+  "lugares": [
+    {
+      "id": "3282",
+      "nome": "Homol",
+      "categoria": "2",
+      "localizacao": "fghj",
+      "urlFoto": "dfghj",
+      "avaliacao": "1"
+    }
   ]
 }

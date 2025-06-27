@@ -29,14 +29,16 @@
         class="block text-gray-600 font-medium mb-2">
         Categoria
       </label>
-      <input
-        type="text"
+      <select
         id="categoria"
         name="categoria"
         formControlName="categoria"
-        placeholder="Ex: Restaurante"
-        class="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-blue-400"
-        required />
+        class="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-blue-400" 
+        required>  
+        <option *ngFor="let categoria of categorias" [value]="categoria.id">
+          {{ categoria.nome }}
+        </option>
+      </select>
       @if (isCampoInvalido('categoria')) {
       <span class="text-red-500 text-sm">Campo obrigatório</span>
       }
@@ -86,18 +88,22 @@
         class="block text-gray-600 font-medium mb-2">
         Avaliação
       </label>
-      <input
-        type="text"
+ <select
         id="avaliacao"
         name="avaliacao"
         formControlName="avaliacao"
-        placeholder="Ex: Ótimo, Bom, Regular"
-        class="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-blue-400"
-        required />
+        class="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-blue-400" 
+        required>  
+        <option [value]="1">1 Estrela</option>
+        <option [value]="2">2 Estrelas</option>
+        <option [value]="3">3 Estrelas</option>
+        <option [value]="4">4 Estrelas</option>
+        <option [value]="5">5 Estrelas</option>
+      </select>
       @if (isCampoInvalido('avaliacao')) {
       <span class="text-red-500 text-sm">Campo obrigatório</span>
       }
-    </div>    
+    </div>
 
     <button
       type="submit"

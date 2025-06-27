@@ -1,19 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LugarService } from '../service/lugar';
-import { Categoria } from '../../categorias/model/categoria';  
+import { Categoria } from '../../categorias/model/categoria';
+import { CategoriaService } from '../../categorias/service/categoria';
 
 @Component({
   selector: 'app-lugar',
   standalone: false,
   templateUrl: './lugar.html',
-  styleUrl: './lugar.scss'
+  styleUrl: './lugar.scss',
 })
-export class Lugar {
+export class Lugar implements OnInit {
   camposForm: FormGroup;
-  categorias: Categoria[] = []
+  categorias: Categoria[] = [];
 
-  constructor(private readonly service: LugarService) {
+  constructor(private readonly categoriaService: CategoriaService, private readonly service: LugarService) {
     this.camposForm = new FormGroup({
       nome: new FormControl('', Validators.maxLength(5)),
       categoria: new FormControl('', Validators.required),
@@ -45,4 +46,15 @@ export class Lugar {
     const controle = this.camposForm.get(campo);
     return (controle?.invalid && controle?.touched) || false;
   }
+
+  ngOnInit(): void {
+    this.categoriaService.listarTodas().subscribe({
+      next: (categorias) => {
+        this.categorias = categorias;
+      },
+      error: (error) => {
+        console.error('Erro ao carregar categorias', error);
+      },
+    });
+  }     
 }
